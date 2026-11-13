@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Định hướng tương lai</title>
+<style>
+:root{--blue:#2862ee;--navy:#192957;--muted:#71819f;--bg:#f2f6ff;--white:#fff;--line:#dfe7f5;--green:#16a34a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--navy)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.hidden{display:none!important}
+.auth-wrap{min-height:100vh;display:grid;place-items:center;padding:24px}
+.auth-card{width:min(420px,100%);background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 40px #1d3d7710}
+.brand{font-weight:850;color:var(--blue);font-size:20px;letter-spacing:.2px}.auth-card h1{font-size:25px;margin:24px 0 8px}.sub{color:var(--muted);line-height:1.55;font-size:14px}
+.field{display:grid;gap:7px;margin:16px 0}.field label{font-size:13px;font-weight:700}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 13px;background:#fff;color:var(--navy);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}
+.primary{border:0;background:var(--blue);color:#fff;border-radius:11px;padding:12px 18px;font-weight:750}.primary:hover{filter:brightness(.96)}.secondary{border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:11px;padding:10px 14px;font-weight:700}
+.full{width:100%}.switch{font-size:13px;color:var(--muted);text-align:center;margin-top:18px}.switch a{color:var(--blue);font-weight:700;cursor:pointer}
+.app{min-height:100vh;padding-bottom:86px}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100% - 900px)/2));background:#f7f9ff}
+.profile{width:38px;height:38px;border-radius:50%;border:0;background:#dce9ff;color:var(--blue);font-size:21px}
+main{max-width:900px;margin:0 auto;padding:10px 24px 30px}.page-title{font-size:26px;line-height:1.2;margin:10px 0 10px;font-weight:850}.page-sub{color:var(--muted);font-size:14px;margin:0 0 28px}
+.card{background:#fff;border-radius:20px;padding:22px;margin-bottom:18px}.eyebrow{font-size:11px;font-weight:850;color:var(--blue);text-transform:uppercase;letter-spacing:.2px}.card h2{font-size:18px;margin:12px 0 6px}.card p{font-size:13px;color:var(--muted);line-height:1.55}.progress{height:9px;border-radius:99px;background:#dce8ff;overflow:hidden;margin:16px 0}.progress span{display:block;height:100%;background:var(--blue);border-radius:99px;transition:width .2s}
+.section-title{font-size:16px;margin:26px 0 16px;font-weight:800}.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.tile{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 14px;color:var(--blue);font-weight:750;text-align:left;min-height:60px}.tile:hover,.career:hover{border-color:#9bb9ff}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;gap:0;padding:10px 8px calc(10px + env(safe-area-inset-bottom));z-index:5}
+.nav-btn{border:0;background:none;color:var(--muted);font-size:12px;padding:10px 20px;min-width:100px}.nav-btn.active{color:var(--blue)}
+.question{border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0;background:#fff}.question strong{display:block;margin-bottom:12px;font-size:14px}.options{display:flex;flex-wrap:wrap;gap:8px}.option{border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:white;color:#526482;font-size:13px}.option.selected{background:#eaf1ff;border-color:var(--blue);color:var(--blue);font-weight:750}
+.career{border:1px solid transparent;background:#fff;border-radius:18px;padding:18px;margin:12px 0}.career h3{font-size:16px;margin:0 0 6px}.tag{display:inline-block;background:#dcfce7;color:#166534;border-radius:30px;padding:5px 10px;font-size:11px;font-weight:800;margin:5px 0}.career p{margin:7px 0}
+.plan-row{display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:18px;padding:17px;margin:12px 0}.year{flex:0 0 54px;height:54px;display:grid;place-items:center;background:#deebff;color:var(--blue);border-radius:15px;font-size:11px;font-weight:850}.plan-content{flex:1}.plan-content strong{font-size:13px;line-height:1.5}.plan-content p{font-size:12px;color:var(--muted);margin:5px 0}.add-link{border:0;background:none;padding:3px 0;color:var(--blue);font-size:12px;font-weight:750}
+.task{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:15px 16px;margin:10px 0;font-size:13px}.task input{width:20px;height:20px;accent-color:var(--green)}.big-number{font-size:36px;color:var(--blue);font-weight:850;margin:8px 0}
+.modal-backdrop{position:fixed;inset:0;background:#14234d66;display:grid;place-items:center;padding:18px;z-index:10}.modal{background:#fff;border-radius:20px;padding:22px;width:min(460px,100%);max-height:85vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#eef3ff;border-radius:50%;width:32px;height:32px;color:var(--navy)}
+.muted{color:var(--muted)}.small{font-size:12px}.toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:#17305f;color:#fff;padding:10px 16px;border-radius:12px;z-index:20;font-size:13px}
+@media(min-width:700px){main{padding-top:20px}.page-title{font-size:28px}.tiles{grid-template-columns:repeat(4,1fr)}.bottom-nav{gap:30px}.nav-btn{min-width:120px}}
+@media(max-width:420px){.topbar{padding:0 24px}main{padding-left:24px;padding-right:24px}.nav-btn{min-width:0;flex:1;padding:10px 4px}.page-title{font-size:24px}}
+</style>
+</head>
+<body>
+<div id="auth" class="auth-wrap">
+  <div class="auth-card">
+    <div class="brand">ĐỊNH HƯỚNG TƯƠNG LAI</div>
+    <div id="register-form">
+      <h1>Tạo tài khoản</h1><p class="sub">Bắt đầu khám phá bản thân và xây dựng con đường tương lai của bạn.</p>
+      <div class="field"><label>Họ và tên</label><input id="reg-name" placeholder="Nhập họ tên"></div>
+      <div class="field"><label>Email</label><input id="reg-email" type="email" placeholder="name@email.com"></div>
+      <div class="field"><label>Mật khẩu</label><input id="reg-pass" type="password" placeholder="Tối thiểu 6 ký tự"></div>
+      <button class="primary full" onclick="register()">Đăng ký</button>
+      <div class="switch">Đã có tài khoản? <a onclick="showLogin()">Đăng nhập</a></div>
+    </div>
+    <div id="login-form" class="hidden">
+      <h1>Chào mừng trở lại!</h1><p class="sub">Đăng nhập để tiếp tục hành trình của bạn.</p>
+      <div class="field"><label>Email</label><input id="login-email" type="email" placeholder="name@email.com"></div>
+      <div class="field"><label>Mật khẩu</label><input id="login-pass" type="password" placeholder="Nhập mật khẩu"></div>
+      <button class="primary full" onclick="login()">Đăng nhập</button>
+      <div class="switch">Chưa có tài khoản? <a onclick="showRegister()">Đăng ký</a></div>
+    </div>
+  </div>
+</div>
+<div id="app" class="app hidden">
+  <header class="topbar"><div class="brand">ĐỊNH HƯỚNG TƯƠNG LAI</div><button class="profile" title="Tài khoản" onclick="accountMenu()">♙</button></header>
+  <main id="content"></main>
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-page="explore" onclick="navigate('explore')">Khám phá</button>
+    <button class="nav-btn" data-page="career" onclick="navigate('career')">Nghề nghiệp</button>
+    <button class="nav-btn" data-page="plan" onclick="navigate('plan')">Kế hoạch</button>
+    <button class="nav-btn" data-page="journey" onclick="navigate('journey')">Hành trình</button>
+  </nav>
+</div>
+<div id="modal-root"></div><div id="toast-root"></div>
+<script>
+const $=id=>document.getElementById(id);
+let user=null, page='explore';
+const defaultTasks=[
+ {id:'study',text:'Hoàn thành mục tiêu học tập',done:true},
+ {id:'career',text:'Tìm hiểu ngành nghề',done:true},
+ {id:'language',text:'Cải thiện ngoại ngữ',done:false},
+ {id:'activity',text:'Tham gia hoạt động ngoại khóa',done:false},
+ {id:'intern',text:'Tìm cơ hội thực tập',done:false}
+];
+let data={answers:{},career:'Logistics và Quản lý chuỗi cung ứng',wish:'',tasks:defaultTasks,customTasks:[],planNotes:{}};
+const questions=[
+ {key:'interest',title:'Bạn thích hoạt động nào nhất?',opts:['Phân tích số liệu, tìm quy luật','Giao tiếp, kết nối mọi người','Sáng tạo nội dung, thiết kế','Tổ chức công việc, lập kế hoạch','Tìm hiểu máy móc, công nghệ']},
+ {key:'personality',title:'Môi trường nào khiến bạn thoải mái?',opts:['Có quy trình và mục tiêu rõ ràng','Năng động, thường xuyên gặp gỡ','Tự do, nhiều ý tưởng mới','Làm việc nhóm và hỗ trợ nhau','Độc lập, tập trung chuyên sâu']},
+ {key:'ability',title:'Bạn tự tin nhất ở năng lực nào?',opts:['Tư duy logic, giải quyết vấn đề','Giao tiếp, thuyết trình','Sáng tạo, cảm nhận thẩm mỹ','Lãnh đạo, sắp xếp công việc','Tin học, kỹ thuật']},
+ {key:'value',title:'Điều gì quan trọng nhất khi chọn nghề?',opts:['Cơ hội phát triển lâu dài','Thu nhập và sự ổn định','Được sáng tạo, đổi mới','Được giúp đỡ và làm việc với người khác','Có cơ hội làm việc quốc tế']}
+];
+function showToast(msg){$('toast-root').innerHTML='<div class="toast">'+msg+'</div>';setTimeout(()=>$('toast-root').innerHTML='',2300)}
+function showLogin(){$('register-form').classList.add('hidden');$('login-form').classList.remove('hidden')}
+function showRegister(){$('login-form').classList.add('hidden');$('register-form').classList.remove('hidden')}
+function register(){
+ const name=$('reg-name').value.trim(),email=$('reg-email').value.trim().toLowerCase(),pass=$('reg-pass').value;
+ if(!name||!email||pass.length<6)return showToast('Vui lòng nhập đủ thông tin, mật khẩu từ 6 ký tự.');
+ let users=JSON.parse(localStorage.getItem('future_users')||'{}');if(users[email])return showToast('Email này đã được đăng ký.');
+ users[email]={name,pass};localStorage.setItem('future_users',JSON.stringify(users));user={name,email};saveData();enterApp();
+}
+function login(){
+ const email=$('login-email').value.trim().toLowerCase(),pass=$('login-pass').value,users=JSON.parse(localStorage.getItem('future_users')||'{}');
+ if(!users[email]||users[email].pass!==pass)return showToast('Email hoặc mật khẩu chưa chính xác.');
+ user={name:users[email].name,email};loadData();enterApp();
+}
+function saveData(){if(user)localStorage.setItem('future_data_'+user.email,JSON.stringify(data))}
+function loadData(){let saved=localStorage.getItem('future_data_'+user.email);data=saved?JSON.parse(saved):{answers:{},career:'Logistics và Quản lý chuỗi cung ứng',wish:'',tasks:defaultTasks,customTasks:[],planNotes:{}};if(!data.tasks)data.tasks=defaultTasks;if(!data.customTasks)data.customTasks=[]}
+function enterApp(){$('auth').classList.add('hidden');$('app').classList.remove('hidden');navigate('explore')}
+function logout(){saveData();user=null;$('app').classList.add('hidden');$('auth').classList.remove('hidden');showLogin()}
+function accountMenu(){if(confirm('Bạn muốn đăng xuất khỏi tài khoản?'))logout()}
+function navigate(p){page=p;document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===p));render()}
+function heading(title,sub){return `<h1 class="page-title">${title}</h1><p class="page-sub">${sub}</p>`}
+function render(){
+ const c=$('content');
+ if(page==='explore')c.innerHTML=renderExplore();
+ if(page==='career')c.innerHTML=renderCareer();
+ if(page==='plan')c.innerHTML=renderPlan();
+ if(page==='journey')c.innerHTML=renderJourney();
+}
+function renderExplore(){
+ const done=Object.keys(data.answers).length===questions.length;
+ return heading('Khám phá chính mình!','Hiểu rõ bản thân để lựa chọn tương lai phù hợp.')+
+ `<section class="card"><div class="eyebrow">BÀI KIỂM TRA KHÁM PHÁ BẢN THÂN</div><h2>${done?'Bạn đã hoàn thành bài khám phá!':'Bạn hiểu mình đến đâu?'}</h2><p>Trả lời câu hỏi về sở thích, năng lực và điểm mạnh của bạn.</p><div class="progress"><span style="width:${Object.keys(data.answers).length/questions.length*100}%"></span></div><button class="primary full" onclick="openQuiz()">${done?'Xem lại kết quả':'Bắt đầu khám phá'}</button></section>
+ <h2 class="section-title">Bạn muốn tìm hiểu điều gì?</h2><div class="tiles"><button class="tile" onclick="openQuiz(0)">Sở thích cá nhân</button><button class="tile" onclick="openQuiz(2)">Điểm mạnh</button><button class="tile" onclick="openQuiz(2)">Kỹ năng</button><button class="tile" onclick="openQuiz(1)">Tính cách</button></div>
+ ${done?`<section class="card" style="margin-top:20px"><div class="eyebrow">TÓM TẮT CỦA BẠN</div><h2>${profileSummary()}</h2><p>${profileDetail()}</p><button class="secondary" onclick="navigate('career')">Xem ngành nghề phù hợp →</button></section>`:''}`;
+}
+function openQuiz(start=0){
+ let idx=start;const root=$('modal-root');
+ function draw(){root.innerHTML=`<div class="modal-backdrop"><div class="modal"><div class="modal-head"><div><div class="eyebrow">KHÁM PHÁ BẢN THÂN · ${idx+1}/${questions.length}</div><h2 style="margin:8px 0">Bài kiểm tra của bạn</h2></div><button class="close" onclick="closeModal()">×</button></div><div class="progress"><span style="width:${(idx+1)/questions.length*100}%"></span></div><div class="question"><strong>${questions[idx].title}</strong><div class="options">${questions[idx].opts.map((o,i)=>`<button class="option ${data.answers[questions[idx].key]===o?'selected':''}" onclick="chooseAnswer('${questions[idx].key}',${i})">${o}</button>`).join('')}</div></div><div style="display:flex;justify-content:space-between;margin-top:18px"><button class="secondary" ${idx===0?'disabled':''} onclick="quizMove(-1)">Quay lại</button><button class="primary" onclick="quizMove(1)">${idx===questions.length-1?'Hoàn thành':'Tiếp theo'}</button></div></div></div>`}
+ window.chooseAnswer=(key,i)=>{data.answers[key]=questions.find(q=>q.key===key).opts[i];draw()};
+ window.quizMove=(d)=>{if(d===1&&!data.answers[questions[idx].key])return showToast('Hãy chọn một câu trả lời nhé.');if(idx===questions.length-1&&d===1){saveData();closeModal();showToast('Đã lưu kết quả khám phá!');render();return}idx=Math.max(0,Math.min(questions.length-1,idx+d));draw()};
+ draw();
+}
+function closeModal(){$('modal-root').innerHTML=''}
+function profileSummary(){let a=data.answers;return a.interest?.split(',')[0]||'Người khám phá tiềm năng'}
+function profileDetail(){let a=data.answers;return `Sở thích: ${a.interest||'Chưa cập nhật'}. Điểm mạnh: ${a.ability||'Chưa cập nhật'}. Phong cách: ${a.personality||'Chưa cập nhật'}.`}
+function recommend(){
+ if(Object.keys(data.answers).length<4)return ['Logistics và Quản lý chuỗi cung ứng','Kinh doanh quốc tế','Quản trị kinh doanh'];
+ let a=Object.values(data.answers).join(' ');
+ if(a.includes('Phân tích')||a.includes('quy trình')||a.includes('Tổ chức')||a.includes('số liệu'))return ['Logistics và Quản lý chuỗi cung ứng','Phân tích kinh doanh','Quản trị vận hành'];
+ if(a.includes('Giao tiếp')||a.includes('gặp gỡ')||a.includes('người khác'))return ['Kinh doanh quốc tế','Quản trị nhân lực','Marketing'];
+ if(a.includes('Sáng tạo')||a.includes('thiết kế')||a.includes('ý tưởng'))return ['Marketing','Truyền thông đa phương tiện','Thiết kế đồ họa'];
+ return ['Công nghệ thông tin','Quản trị kinh doanh','Logistics và Quản lý chuỗi cung ứng'];
+}
+const careerInfo={
+ 'Logistics và Quản lý chuỗi cung ứng':'Tổ chức vận chuyển, kho bãi, mua hàng và dòng lưu chuyển hàng hóa.',
+ 'Kinh doanh quốc tế':'Giao thương, xuất nhập khẩu và phát triển thị trường quốc tế.',
+ 'Marketing':'Nghiên cứu thị trường, xây dựng thương hiệu và truyền thông.',
+ 'Quản trị nhân lực':'Tuyển dụng, đào tạo và phát triển nhân sự.',
+ 'Phân tích kinh doanh':'Phân tích dữ liệu để hỗ trợ doanh nghiệp ra quyết định.',
+ 'Quản trị vận hành':'Tối ưu quy trình, nguồn lực và hiệu quả hoạt động.',
+ 'Truyền thông đa phương tiện':'Sản xuất nội dung, hình ảnh và sản phẩm truyền thông.',
+ 'Thiết kế đồ họa':'Truyền tải thông điệp bằng hình ảnh và thiết kế.',
+ 'Công nghệ thông tin':'Xây dựng, vận hành và phát triển các hệ thống công nghệ.',
+ 'Quản trị kinh doanh':'Điều phối hoạt động và phát triển hoạt động kinh doanh.'
+};
+function renderCareer(){
+ let rec=recommend();return heading('Ngành nghề phù hợp','Khám phá những lựa chọn nghề nghiệp dành cho bạn.')+
+ `<section class="card"><div class="eyebrow">GỢI Ý DÀNH CHO BẠN</div><h2>${rec[0]}</h2><span class="tag">Ngành nghề tham khảo</span><p>${careerInfo[rec[0]]||''}</p><button class="primary" onclick="selectCareer('${rec[0]}')">Chọn ngành này →</button></section>
+ <h2 class="section-title">Các ngành nghề khác</h2>${rec.slice(1).concat(['Marketing','Quản trị nhân lực']).filter((v,i,a)=>a.indexOf(v)===i).map(n=>`<div class="career" onclick="selectCareer('${n}')"><h3>${n}</h3><p>${careerInfo[n]||'Tìm hiểu lĩnh vực, kỹ năng và cơ hội nghề nghiệp.'}</p><button class="add-link">Chọn ngành này →</button></div>`).join('')}
+ <p class="small muted">Gợi ý chỉ mang tính tham khảo, không phải kết luận cố định. Bạn nên tìm hiểu thêm chương trình học và trải nghiệm thực tế.</p>`;
+}
+function selectCareer(n){data.career=n;saveData();showToast('Đã chọn '+n);navigate('plan')}
+function renderPlan(){
+ let names=['Hoàn thành chương trình học, tìm hiểu ngành nghề.','Trau dồi ngoại ngữ và kỹ năng chuyên môn.','Tham gia thực tập và tích lũy kinh nghiệm.','Tốt nghiệp và tìm kiếm công việc phù hợp.'];
+ return heading('Kế hoạch của tôi','Chia mục tiêu lớn thành từng bước nhỏ.')+
+ `<section class="card"><div class="eyebrow">MỤC TIÊU CỦA BẠN</div><h2>Xây dựng tương lai chủ động</h2><p>Ngành nghề đang hướng tới: <b>${data.career}</b></p><div class="field"><label>Mong muốn cá nhân</label><input id="wish-input" value="${escapeHtml(data.wish)}" placeholder="Ví dụ: làm việc trong môi trường quốc tế"></div><button class="secondary" onclick="saveWish()">Lưu mong muốn</button></section>
+ ${names.map((n,i)=>`<div class="plan-row"><div class="year">NĂM ${i+1}</div><div class="plan-content"><strong>${n}</strong><p>${data.planNotes[i]||'Đặt mục tiêu và theo dõi tiến độ.'}</p><button class="add-link" onclick="editPlan(${i})">＋ Thêm nhiệm vụ</button></div></div>`).join('')}`;
+}
+function saveWish(){data.wish=$('wish-input').value.trim();saveData();showToast('Đã lưu mong muốn của bạn.')}
+function editPlan(i){let note=prompt('Thêm nhiệm vụ hoặc ghi chú cho năm '+(i+1)+':',data.planNotes[i]||'');if(note!==null){data.planNotes[i]=note.trim();saveData();render()}}
+function renderJourney(){
+ let tasks=[...data.tasks,...data.customTasks],completed=tasks.filter(t=>t.done).length,pct=tasks.length?Math.round(completed/tasks.length*100):0;
+ return heading('Hành trình phát triển','Theo dõi những mục tiêu bạn đã thực hiện.')+
+ `<section class="card"><div class="eyebrow">TIẾN ĐỘ MỤC TIÊU</div><div class="big-number">${pct}%</div><p>${pct===100?'Bạn đã hoàn thành tất cả mục tiêu!': 'Bạn đang đi đúng hướng. Tiếp tục nhé!'}</p><div class="progress"><span style="width:${pct}%"></span></div></section>
+ <h2 class="section-title">Danh sách công việc</h2>${tasks.map(t=>`<label class="task"><input type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}',this.checked)"><span style="${t.done?'color:#8a99b2;text-decoration:line-through':''}">${escapeHtml(t.text)}</span></label>`).join('')}
+ <button class="secondary" style="margin-top:10px" onclick="addTask()">＋ Thêm mục tiêu</button>`;
+}
+function toggleTask(id,checked){let t=[...data.tasks,...data.customTasks].find(x=>x.id===id);if(t)t.done=checked;saveData();render()}
+function addTask(){let t=prompt('Bạn muốn thêm mục tiêu nào?');if(t&&t.trim()){data.customTasks.push({id:'custom_'+Date.now(),text:t.trim(),done:false});saveData();render()}}
+function escapeHtml(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+</script>
+</body>
+</html>
